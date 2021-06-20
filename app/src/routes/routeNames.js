@@ -1,4 +1,4 @@
 export const ROUTES = {
-  HOME_PAGE: "/",
-  SIGNUP_PAGE: "/signup",
+  SIGNUP_PAGE: "/",
+  LOGIN_PAGE: "/login",
 };

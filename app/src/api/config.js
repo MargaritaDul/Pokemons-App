@@ -3,11 +3,11 @@ import axios from "axios";
 const domain = "https://demo-api.it-shatle.by";
 
 const config = {
-  baseURL: "domain",
+  baseURL: domain,
   timeout: 100000,
   headers: {
     Accept: "application/json",
-    "Contant-Type": "application/json",
+    "Content-Type": "application/json",
     Pragma: "no-cache",
   },
 };

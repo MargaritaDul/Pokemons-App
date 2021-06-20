@@ -1,28 +1,28 @@
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SignUpPageLayout from "../components/SignUpPageLayout";
 import { SIGN_UP_REQUEST } from "../../../modules/SingUp/actions";
+import useForm from "../../../hooks/useForm";
 
 const SignUpPageContainer = () => {
   const dispatch = useDispatch();
 
-  const [signUpValues, setSignUpValues] = useState({
+  const { success } = useSelector((state) => state.signUp);
+
+  const [signUpValues, setSignUpValues] = useForm({
     email: "",
     firstName: "",
-  });
-
-  const handleFormChange = useCallback(
-    (event) => {
-      const { value, name, type } = event.target;
-
-      if (type === "checkbox") {
-        setSignUpValues({ ...signUpValues, [name]: event.target.checked });
-        return;
-      }
-      setSignUpValues({ ...signUpValues, [name]: value });
+    lastName: "",
+    address: {
+      country: "",
+      city: "",
+      addressLine1: "",
+      addressLine2: "",
     },
-    [signUpValues]
-  );
+    gender: "",
+    password: "",
+    phone: "",
+  });
 
   const handleSubmit = useCallback(
     (event) => {
@@ -36,7 +36,8 @@ const SignUpPageContainer = () => {
     <SignUpPageLayout
       signUpValues={signUpValues}
       handleSubmit={handleSubmit}
-      handleFormChange={handleFormChange}
+      setSignUpValues={setSignUpValues}
+      success={success}
     />
   );
 };
