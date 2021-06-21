@@ -13,11 +13,16 @@ const signupBlackListedFields = createBlacklistFilter("signUp", [
   "errors",
 ]);
 
+const authBlackListedFields = createBlacklistFilter("auth", [
+  "isLoading",
+  "errors",
+]);
+
 const persistConfig = {
   key: "root",
   storage,
   whitelist: ["signUp", "auth"],
-  transforms: [signupBlackListedFields],
+  transforms: [signupBlackListedFields, authBlackListedFields],
 };
 
 export default persistReducer(persistConfig, rootReducer);

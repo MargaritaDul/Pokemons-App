@@ -1,5 +1,6 @@
 import { Box, Button, TextField } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 import { ROUTES } from "../../../../routes/routeNames";
 
@@ -13,9 +14,15 @@ const SignUpPageLayout = ({
     <div>
       {success ? (
         <div>
-          <div> Your account successfully has been created! </div>
+          <div>
+            {" "}
+            <Alert severity="success">
+              <AlertTitle>Welcome to Pokemon World!</AlertTitle>
+              Your account successfully has been created
+            </Alert>{" "}
+          </div>
           <Link to={ROUTES.LOGIN_PAGE}>
-            <button>Login Page</button>
+            <Button>Login Page</Button>
           </Link>
         </div>
       ) : (
@@ -23,6 +30,8 @@ const SignUpPageLayout = ({
           <form onSubmit={handleSubmit}>
             <Box>
               <TextField
+                required
+                label="Required"
                 name="email"
                 onChange={setSignUpValues}
                 label="Email"
@@ -31,6 +40,8 @@ const SignUpPageLayout = ({
             </Box>
             <Box>
               <TextField
+                required
+                label="Required"
                 name="firstName"
                 onChange={setSignUpValues}
                 label="First Name"
@@ -39,6 +50,8 @@ const SignUpPageLayout = ({
             </Box>
             <Box>
               <TextField
+                required
+                label="Required"
                 name="lastName"
                 onChange={setSignUpValues}
                 label="Last Name"
@@ -56,6 +69,8 @@ const SignUpPageLayout = ({
             <Box>
               <TextField
                 name="gender"
+                required
+                label="Required"
                 onChange={setSignUpValues}
                 label="Gender"
                 type="text"
@@ -63,6 +78,8 @@ const SignUpPageLayout = ({
             </Box>
             <Box>
               <TextField
+                required
+                label="Required"
                 name="password"
                 onChange={setSignUpValues}
                 label="Password"
@@ -71,12 +88,15 @@ const SignUpPageLayout = ({
             </Box>
             <Box>
               <TextField
+                required
+                label="Required"
                 name="phone"
                 onChange={setSignUpValues}
                 label="Phone Number"
                 type="text"
               />
             </Box>
+
             <Button type="submit">SIGN UP</Button>
           </form>
         </Box>
