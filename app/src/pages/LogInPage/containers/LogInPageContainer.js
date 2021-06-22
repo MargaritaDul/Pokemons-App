@@ -1,15 +1,20 @@
-import { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+
 import LogInPageLayout from "../components/LogInPageLayout";
 import { SIGN_IN_REQUEST } from "../../../modules/Login/actions";
 import useForm from "../../../hooks/useForm";
+import { ROUTES } from "../../../routes/routeNames";
 
 const LogInPageContainer = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
+  const { isAuth } = useSelector((state) => state.auth);
   const [logInValues, setLogInValues] = useForm({
     email: "",
-    firstName: "",
+    password: "",
   });
 
   const handleSubmit = useCallback(
@@ -19,6 +24,12 @@ const LogInPageContainer = () => {
     },
     [dispatch, logInValues]
   );
+
+  useEffect(() => {
+    if (isAuth) {
+      history.push(ROUTES.POKEMONS_PAGE);
+    }
+  }, [isAuth]);
 
   return (
     <LogInPageLayout
