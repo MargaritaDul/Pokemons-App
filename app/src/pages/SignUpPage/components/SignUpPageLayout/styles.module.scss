@@ -1,0 +1,23 @@
+.container {
+    padding: 16px;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonStyle {
+    background-color: #e81515;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 60px;
+    width:100%;
+    opacity: 0.9;
+}

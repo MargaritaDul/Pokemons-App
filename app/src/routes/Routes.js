@@ -4,6 +4,7 @@ import SignUpPageContainer from "../pages/SignUpPage/containers/SignUpPageContai
 import LogInPageContainer from "../pages/LogInPage/containers/LogInPageContainer";
 import PokemonsPageContainer from "../pages/PokemonsPage/containers/PokemonsPageContainer";
 import PokemonsDetailsPageContainer from "../pages/PokemonsDetailsPage/containers/PokemonsDetailsPageContainer";
+import PrivateRoute from "./PrivateRoute";
 
 import { ROUTES } from "./routeNames";
 
@@ -17,7 +18,12 @@ const Routes = () => {
         path={ROUTES.POKEMONS_PAGE}
         component={PokemonsPageContainer}
       />
-      <Route
+      <PrivateRoute
+        exact
+        path={ROUTES.POKEMONS_DETAILS}
+        component={PokemonsDetailsPageContainer}
+      />
+      <PrivateRoute
         exact
         path={ROUTES.POKEMONS_DETAILS}
         component={PokemonsDetailsPageContainer}

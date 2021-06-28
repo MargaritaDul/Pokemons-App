@@ -6,6 +6,7 @@ const defaultState = {
   itemsList: [],
   isLoading: false,
   errors: null,
+  currentPage: 1,
 };
 
 const getPokemonsReducer = handleActions(
@@ -23,6 +24,10 @@ const getPokemonsReducer = handleActions(
       ...state,
       isLoading: false,
       errors: payload.response,
+    }),
+    [actions.CHANGE_PAGE]: (state, { payload }) => ({
+      ...state,
+      currentPage: payload,
     }),
   },
   defaultState

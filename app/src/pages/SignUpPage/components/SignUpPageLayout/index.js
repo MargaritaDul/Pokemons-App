@@ -1,32 +1,30 @@
 import { Box, Button, TextField } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 import { ROUTES } from "../../../../routes/routeNames";
+import styles from "./styles.module.scss";
 
-const SignUpPageLayout = ({
-  handleSubmit,
-  setSignUpValues,
-  signUpValues,
-  success,
-}) => {
+const SignUpPageLayout = ({ handleSubmit, setSignUpValues, success }) => {
   return (
     <div>
       {success ? (
         <div>
           <div>
-            {" "}
             <Alert severity="success">
               <AlertTitle>Welcome to Pokemon World!</AlertTitle>
               Your account successfully has been created
-            </Alert>{" "}
+            </Alert>
           </div>
           <Link to={ROUTES.LOGIN_PAGE}>
             <Button>Login Page</Button>
           </Link>
         </div>
       ) : (
-        <Box>
+        <Box className={styles.container}>
           <form onSubmit={handleSubmit}>
             <Box>
               <TextField
@@ -67,14 +65,21 @@ const SignUpPageLayout = ({
               />
             </Box>
             <Box>
-              <TextField
-                name="gender"
-                required
-                label="Required"
-                onChange={setSignUpValues}
-                label="Gender"
-                type="text"
-              />
+              <FormControl>
+                <InputLabel htmlFor="age-native-simple">Gender</InputLabel>
+                <Select
+                  native
+                  onChange={setSignUpValues}
+                  inputProps={{
+                    name: "gender",
+                    id: "age-native-simple",
+                  }}
+                >
+                  <option aria-label="None" value="" />
+                  <option value="male">male</option>
+                  <option value="female">female</option>
+                </Select>
+              </FormControl>
             </Box>
             <Box>
               <TextField
@@ -86,6 +91,7 @@ const SignUpPageLayout = ({
                 type="password"
               />
             </Box>
+
             <Box>
               <TextField
                 required
@@ -96,8 +102,9 @@ const SignUpPageLayout = ({
                 type="text"
               />
             </Box>
-
-            <Button type="submit">SIGN UP</Button>
+            <button type="submit" className={styles.buttonStyle}>
+              SIGN UP
+            </button>
           </form>
         </Box>
       )}

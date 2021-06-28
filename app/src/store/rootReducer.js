@@ -3,16 +3,18 @@ import { persistReducer } from "redux-persist";
 import { createBlacklistFilter } from "redux-persist-transform-filter";
 import storage from "redux-persist/lib/storage";
 
-import signUp from "../modules/SingUp/reducers";
+import signUp from "../pages/SignUpPage/reducers";
 import auth from "../modules/Login/reducers";
-import getPokemons from "../modules/PokemonsList/reducers";
-import getPokemonsDetails from "../modules/PokemonsDetails/reducers";
+import getPokemons from "../pages/PokemonsPage/reducers";
+import getPokemonsDetails from "../pages/PokemonsDetailsPage/reducers";
+import addPokemon from "../modules/Cart/reducers";
 
 const rootReducer = combineReducers({
   signUp,
   auth,
   getPokemons,
   getPokemonsDetails,
+  addPokemon,
 });
 
 const signupBlackListedFields = createBlacklistFilter("signUp", [

@@ -3,7 +3,7 @@ import { handleActions } from "redux-actions";
 import * as actions from "../actions";
 
 const defaultState = {
-  item: "",
+  pokemonInfo: {},
   isLoading: false,
   errors: null,
 };
@@ -17,7 +17,7 @@ const getPokemonsDetailsReducer = handleActions(
     [actions.GET_POKEMONS_DETAILS_SUCCESS]: (state, { payload }) => ({
       ...state,
       isLoading: false,
-      itemsList: payload.response,
+      pokemonInfo: payload.response,
     }),
     [actions.GET_POKEMONS_DETAILS_FAIL]: (state, { payload }) => ({
       ...state,

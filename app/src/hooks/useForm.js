@@ -7,6 +7,8 @@ export default (initialValues) => {
     (event) => {
       const { value, name, type } = event.target;
 
+      console.log(value);
+
       if (type === "checkbox") {
         setFormValues({ ...formValues, [name]: event.target.checked });
         return;

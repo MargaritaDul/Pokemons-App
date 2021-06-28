@@ -1,7 +1,8 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import SignUpPageLayout from "../components/SignUpPageLayout";
-import { SIGN_UP_REQUEST } from "../../../modules/SingUp/actions";
+import { SIGN_UP_REQUEST } from "../actions";
 import useForm from "../../../hooks/useForm";
 
 const SignUpPageContainer = () => {

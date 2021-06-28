@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
@@ -11,7 +11,7 @@ const LogInPageContainer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth, errors } = useSelector((state) => state.auth);
   const [logInValues, setLogInValues] = useForm({
     email: "",
     password: "",
@@ -31,11 +31,32 @@ const LogInPageContainer = () => {
     }
   }, [isAuth]);
 
+  const [open, setOpen] = useState(false);
+
+  const handleClick = useCallback(() => {
+    if (!errors) {
+      setOpen(true);
+    }
+  }, []);
+
+  const handleClose = useCallback((event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  }, []);
+
   return (
     <LogInPageLayout
       logInValues={logInValues}
       handleSubmit={handleSubmit}
       setLogInValues={setLogInValues}
+      isAuth={isAuth}
+      errors={errors}
+      open={open}
+      handleClick={handleClick}
+      handleClose={handleClose}
     />
   );
 };
