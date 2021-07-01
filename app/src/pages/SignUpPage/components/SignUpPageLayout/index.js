@@ -8,7 +8,12 @@ import FormControl from "@material-ui/core/FormControl";
 import { ROUTES } from "../../../../routes/routeNames";
 import styles from "./styles.module.scss";
 
-const SignUpPageLayout = ({ handleSubmit, setSignUpValues, success }) => {
+const SignUpPageLayout = ({
+  handleSubmit,
+  setSignUpValues,
+  success,
+  signUpValues,
+}) => {
   return (
     <div>
       {success ? (
@@ -34,6 +39,7 @@ const SignUpPageLayout = ({ handleSubmit, setSignUpValues, success }) => {
                 onChange={setSignUpValues}
                 label="Email"
                 type="email"
+                value={signUpValues.email}
               />
             </Box>
             <Box>
@@ -44,6 +50,7 @@ const SignUpPageLayout = ({ handleSubmit, setSignUpValues, success }) => {
                 onChange={setSignUpValues}
                 label="First Name"
                 type="text"
+                value={signUpValues.firstName}
               />
             </Box>
             <Box>
@@ -54,9 +61,10 @@ const SignUpPageLayout = ({ handleSubmit, setSignUpValues, success }) => {
                 onChange={setSignUpValues}
                 label="Last Name"
                 type="text"
+                value={signUpValues.lastName}
               />
             </Box>
-            <Box>
+            <Box className={styles.address}>
               <TextField
                 name="address"
                 onChange={setSignUpValues}
@@ -89,6 +97,7 @@ const SignUpPageLayout = ({ handleSubmit, setSignUpValues, success }) => {
                 onChange={setSignUpValues}
                 label="Password"
                 type="password"
+                value={signUpValues.password}
               />
             </Box>
 
@@ -100,6 +109,7 @@ const SignUpPageLayout = ({ handleSubmit, setSignUpValues, success }) => {
                 onChange={setSignUpValues}
                 label="Phone Number"
                 type="text"
+                value={signUpValues.phone}
               />
             </Box>
             <button type="submit" className={styles.buttonStyle}>

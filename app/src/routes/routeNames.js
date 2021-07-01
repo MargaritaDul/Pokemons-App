@@ -3,4 +3,5 @@ export const ROUTES = {
   LOGIN_PAGE: "/",
   POKEMONS_PAGE: "/pokemons",
   POKEMONS_DETAILS: "/pokemons/:id",
+  CART_PAGE: "/cart",
 };

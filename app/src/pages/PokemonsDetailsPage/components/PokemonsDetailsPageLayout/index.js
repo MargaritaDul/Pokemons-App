@@ -1,7 +1,12 @@
 import { v4 as uuidv4 } from "uuid";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import IconButton from "@material-ui/core/IconButton";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
-const PokemonsDetailsPageLayout = ({ pokemonInfo }) => {
-  console.log(pokemonInfo.abilities);
+import { ROUTES } from "../../../../routes/routeNames";
+
+const PokemonsDetailsPageLayout = ({ pokemonInfo, handleAddPokemon }) => {
   return (
     <div>
       <p> {pokemonInfo.name} </p>
@@ -25,6 +30,18 @@ const PokemonsDetailsPageLayout = ({ pokemonInfo }) => {
         ))}
       </div>
       <p> {pokemonInfo.price} $ </p>
+      <div>
+        <IconButton
+          onClick={() => handleAddPokemon(pokemonInfo)}
+          color="primary"
+          aria-label="add to shopping cart"
+        >
+          <AddShoppingCartIcon />
+        </IconButton>
+      </div>
+      <Link to={ROUTES.CART_PAGE}>
+        <Button variant="contained">CART</Button>
+      </Link>
     </div>
   );
 };

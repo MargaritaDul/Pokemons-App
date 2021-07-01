@@ -5,6 +5,7 @@ import LogInPageContainer from "../pages/LogInPage/containers/LogInPageContainer
 import PokemonsPageContainer from "../pages/PokemonsPage/containers/PokemonsPageContainer";
 import PokemonsDetailsPageContainer from "../pages/PokemonsDetailsPage/containers/PokemonsDetailsPageContainer";
 import PrivateRoute from "./PrivateRoute";
+import CartPageContainer from "../pages/CartPage/containers/CartPageContainer";
 
 import { ROUTES } from "./routeNames";
 
@@ -27,6 +28,11 @@ const Routes = () => {
         exact
         path={ROUTES.POKEMONS_DETAILS}
         component={PokemonsDetailsPageContainer}
+      />
+      <PrivateRoute
+        exact
+        path={ROUTES.CART_PAGE}
+        component={CartPageContainer}
       />
     </Switch>
   );

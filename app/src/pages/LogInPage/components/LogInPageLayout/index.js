@@ -1,6 +1,7 @@
 import { Box, Button, TextField } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
+import PropTypes from "prop-types";
 
 import { ROUTES } from "../../../../routes/routeNames";
 import { Link } from "react-router-dom";
@@ -12,7 +13,8 @@ const LogInPageLayout = ({
   handleClick,
   open,
   errors,
-  isAuth,
+  handleLoginReset,
+  logInValues,
 }) => {
   return (
     <div>
@@ -25,6 +27,7 @@ const LogInPageLayout = ({
                 onChange={setLogInValues}
                 label="Email"
                 type="email"
+                value={logInValues.email}
               />
             </Box>
             <Box>
@@ -33,9 +36,9 @@ const LogInPageLayout = ({
                 onChange={setLogInValues}
                 label="Password"
                 type="password"
+                value={logInValues.password}
               />
             </Box>
-
             <Button type="submit" onClick={handleClick}>
               LOG IN
             </Button>
@@ -49,16 +52,25 @@ const LogInPageLayout = ({
             </p>
           </div>
         </Box>
-        <div>
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="warning">
-              {errors}. Please try again
-            </Alert>
-          </Snackbar>
-        </div>
+        {!errors ? (
+          <div></div>
+        ) : (
+          <div>
+            <Snackbar open={open} autoHideDuration={9000} onClose={handleClose}>
+              <Alert onClose={handleClose} severity="warning">
+                {errors}. Please try again
+              </Alert>
+            </Snackbar>
+          </div>
+        )}
       </div>
     </div>
   );
+};
+
+LogInPageLayout.propTypes = {
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
 };
 
 export default LogInPageLayout;

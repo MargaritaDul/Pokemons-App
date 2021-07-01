@@ -10,13 +10,13 @@ const defaultState = {
   isLoading: false,
 };
 
-const addPokemonReducer = handleActions(
+const cartReducer = handleActions(
   {
-    [actions.ADD_POKEMON_REQUEST]: (state) => ({
+    [actions.CART_REQUEST]: (state) => ({
       ...state,
     }),
 
-    [actions.ADD_POKEMON_SUCCESS]: (state, { payload }) => {
+    [actions.CART_SUCCESS]: (state, { payload }) => {
       const { itemsList, quantity, totalPrice } = payload.response;
       return {
         ...state,
@@ -26,7 +26,7 @@ const addPokemonReducer = handleActions(
       };
     },
 
-    [actions.ADD_POKEMON_FAIL]: (state, { payload }) => ({
+    [actions.CART_FAIL]: (state, { payload }) => ({
       ...state,
       isLoading: false,
       errors: payload.response,
@@ -35,4 +35,4 @@ const addPokemonReducer = handleActions(
   defaultState
 );
 
-export default addPokemonReducer;
+export default cartReducer;

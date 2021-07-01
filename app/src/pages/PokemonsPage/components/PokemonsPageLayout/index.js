@@ -1,5 +1,10 @@
 import { CircularProgress, Button } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
+import Alert from "@material-ui/lab/Alert";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import IconButton from "@material-ui/core/IconButton";
+import { ROUTES } from "../../../../routes/routeNames";
+import { Link } from "react-router-dom";
 
 const PokemonsPageLayout = ({
   itemsList,
@@ -10,6 +15,7 @@ const PokemonsPageLayout = ({
   currentPage,
   handlePageChange,
   handleAddPokemon,
+  errors,
 }) => {
   return (
     <div>
@@ -25,16 +31,21 @@ const PokemonsPageLayout = ({
               <button onClick={() => handleGoToDetails(item.id)}>
                 Details
               </button>
-              <button
-                onClick={() => handleAddPokemon(item.id, item.name, item.price)}
+              <IconButton
+                onClick={() => handleAddPokemon(item)}
+                color="primary"
+                aria-label="add to shopping cart"
               >
-                Add
-              </button>
+                <AddShoppingCartIcon />
+              </IconButton>
             </div>
           ))}
         </div>
       )}
       <div>{isAuth && <Button onClick={handleLogout}>Logout</Button>}</div>
+      <Link to={ROUTES.CART_PAGE}>
+        <Button variant="contained">CART</Button>
+      </Link>
       <div>
         <Pagination
           count={30}
@@ -43,6 +54,13 @@ const PokemonsPageLayout = ({
           onChange={handlePageChange}
         />
       </div>
+      {!errors ? (
+        <div></div>
+      ) : (
+        <div>
+          <Alert severity="warning">The Pokemon already in the cart</Alert>
+        </div>
+      )}
     </div>
   );
 };

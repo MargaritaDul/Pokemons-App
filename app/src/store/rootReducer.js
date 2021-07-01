@@ -4,10 +4,11 @@ import { createBlacklistFilter } from "redux-persist-transform-filter";
 import storage from "redux-persist/lib/storage";
 
 import signUp from "../pages/SignUpPage/reducers";
-import auth from "../modules/Login/reducers";
+import auth from "../pages/LogInPage/reducers";
 import getPokemons from "../pages/PokemonsPage/reducers";
 import getPokemonsDetails from "../pages/PokemonsDetailsPage/reducers";
 import addPokemon from "../modules/Cart/reducers";
+import cart from "../pages/CartPage/reducers";
 
 const rootReducer = combineReducers({
   signUp,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   getPokemons,
   getPokemonsDetails,
   addPokemon,
+  cart,
 });
 
 const signupBlackListedFields = createBlacklistFilter("signUp", [

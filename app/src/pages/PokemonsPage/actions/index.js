@@ -5,4 +5,3 @@ export const GET_POKEMONS_SUCCESS = createAction("GET_POKEMONS_SUCCESS");
 export const GET_POKEMONS_FAIL = createAction("GET_POKEMONS_FAIL");
 
 export const CHANGE_PAGE = createAction("CHANGE_PAGE");
-
